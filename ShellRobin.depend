@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1480413511 source:c:\users\robin\onedrive\documents\progra\c\shellrobin\main.c
+	<stdio.h>
+	<stdlib.h>
+	"core.h"
+
+1480455092 c:\users\robin\onedrive\documents\progra\c\shellrobin\core.h
+
+1480455179 source:c:\users\robin\onedrive\documents\progra\c\shellrobin\core.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"core.h"
+	"LibPerso.h"
+
+1480421457 source:c:\users\robin\onedrive\documents\progra\c\shellrobin\libperso.c
+	<stdio.h>
+	<stdlib.h>
+	"LibPerso.h"
+
+1480421428 c:\users\robin\onedrive\documents\progra\c\shellrobin\libperso.h
+
