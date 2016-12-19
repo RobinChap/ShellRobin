@@ -10,13 +10,14 @@
 static FILE* fichier = NULL;
 static char param[PARAM_MAX][TAILLE_STRING_MAX];
 static int debug = 0;
+static int retour = 1;
 
 
 int core(){
     char in[TAILLE_STRING_MAX] = "";
     char out[TAILLE_STRING_MAX] = "";
 
-    int retour = 1;
+
 
     if(debug){ printf(call_function(in, out)); }
     else{ call_function(in, out); }
@@ -49,7 +50,14 @@ char* call_function(char* in, char* out){
             else{ cmd_debug(); }
         }
         else if(paramIs(0, "shutdown")){
-
+            if(debug){ printf(cmd_shutdown()); }
+            else{ cmd_shutdown(); }
+        }
+        else if(paramIs(0, "pwd")){
+            cmd_print_cmd(cmd_pwd(out));
+        }
+        else if(paramIs(0, "cd")){
+            cmd_cd(cmd_pwd(out), param[1]);
         }
         else{
              printf("%s is unknown (Extern function not supported yet)\n", param[0]);
@@ -73,7 +81,7 @@ int paramIs(int number, char* func){
 }
 
 char* cmd_entry(char* in, char* out){
-    printf("%s />", "Robin"); //a changer
+    printf("%s : %s />", "Robin", cmd_short_pwd(out)); //a changer
     fgets(in, TAILLE_STRING_MAX, stdin);
     clean(in, stdin);
     return read_cmd(in, out);
@@ -137,4 +145,37 @@ char* cmd_pwd(char* retour){
     fgets(retour, TAILLE_STRING_MAX, fichier);
     fclose(fichier);
     return retour;
+}
+
+char* cmd_short_pwd(char* retour){ //a modifier
+
+    fichier = fopen("pwd.sc", "r");
+    fgets(retour, TAILLE_STRING_MAX, fichier);
+    fclose(fichier);
+    return retour;
+}
+
+char* cmd_cd(char* pwd, char* target){
+
+    if(target[0] != '\0'){
+        fichier = fopen("pwd.sc", "w+");
+        fprintf("%s/%s", pwd, target);
+        fclose(fichier);
+        return "1";
+    }
+    else{
+        printf("Error : no target path entered\n");
+        return "0";
+    }
+
+}
+
+void cmd_print_cmd(char* p_message){
+    printf("%s\n", p_message);
+}
+
+char* cmd_shutdown(){
+    printf("Turning down ... \n Goodbye");
+    retour = 0;
+    return "1";
 }

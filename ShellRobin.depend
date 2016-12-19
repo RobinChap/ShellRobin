@@ -20,3 +20,24 @@
 
 1480421428 c:\users\robin\onedrive\documents\progra\c\shellrobin\libperso.h
 
+1480546254 source:/home/robin/progra/c/ShellRobin/LibPerso.c
+	<stdio.h>
+	<stdlib.h>
+	"LibPerso.h"
+
+1480546254 /home/robin/progra/c/ShellRobin/LibPerso.h
+
+1480549538 source:/home/robin/progra/c/ShellRobin/main.c
+	<stdio.h>
+	<stdlib.h>
+	"core.h"
+
+1480954708 /home/robin/progra/c/ShellRobin/core.h
+
+1480549538 source:/home/robin/progra/c/ShellRobin/core.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"core.h"
+	"LibPerso.h"
+
